@@ -25,6 +25,9 @@ function App(){
 
         <Route path="/cart" element={<Cart />} />
 
+        {/* GitHub Pages / hash routing edge-cases: never render blank */}
+        <Route path="*" element={<Landing />} />
+
       </Routes>
 
     </div>
