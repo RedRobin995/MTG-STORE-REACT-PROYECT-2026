@@ -5,16 +5,27 @@ import App from "./App"
 import { CartProvider } from "./contexts/CartContext"
 import "./index.css"
 
-// GitHub Pages sometimes opens the site as:
-// - https://<user>.github.io/<repo>
-// - https://<user>.github.io/<repo>#
-// HashRouter expects "#/" for the app root. Normalize to avoid a no-match route
-// on the first load (which can render only shared layout like the Navbar).
+// GitHub Pages + portfolio links can open the site with an empty hash or a hash
+// that doesn't start with "#/". HashRouter expects routes in the "#/..." format.
+// If we don't normalize, the initial route can fail to match and you'll only see
+// shared layout (like the Navbar) until you click a Link.
 if (typeof window !== "undefined") {
-  const h = window.location.hash
-  if (h === "" || h === "#") {
-    window.location.replace(`${window.location.pathname}${window.location.search}#/`)
+  const normalizeHash = () => {
+    const h = window.location.hash
+
+    if (h === "" || h === "#") {
+      // Use assignment (not replace) to reliably trigger routing.
+      window.location.hash = "#/"
+      return
+    }
+
+    if (!h.startsWith("#/")) {
+      // Convert "#foo" → "#/foo"
+      window.location.hash = `#/${h.slice(1)}`
+    }
   }
+
+  normalizeHash()
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(

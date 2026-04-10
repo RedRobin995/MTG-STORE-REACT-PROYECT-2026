@@ -26,7 +26,7 @@ function CardDetail() {
 
   }, [id])
 
-  if(!card) return <p>Loading card...</p>
+  if(!card) return <p className="page loading-text">Loading card...</p>
 
   const mainImage =
     card.image_uris?.normal ||
@@ -47,25 +47,25 @@ function CardDetail() {
   const cheapestPrint = sortedPrints.find(p => p.prices?.usd)
 
   return (
-    <div className="card-detail">
+    <div className="card-detail page">
 
       <div className="card-detail-header">
 
-        <img src={mainImage} className="card-detail-image"/>
+        <img src={mainImage} className="card-detail-image" alt="" />
 
-        <div>
+        <div className="card-detail-meta">
 
           <h1>{card.name}</h1>
 
-          <p>{card.type_line}</p>
+          <p className="type-line">{card.type_line}</p>
 
-          <p>{card.oracle_text || card.card_faces?.[0]?.oracle_text}</p>
+          <p className="oracle">{card.oracle_text || card.card_faces?.[0]?.oracle_text}</p>
 
         </div>
 
       </div>
 
-      <h2>Available Printings</h2>
+      <h2>Available printings</h2>
 
       <div className="prints-list">
 

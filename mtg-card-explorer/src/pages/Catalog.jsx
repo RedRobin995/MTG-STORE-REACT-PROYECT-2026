@@ -28,15 +28,18 @@ function Catalog(){
   }
 
   return(
-    <div>
+    <div className="page catalog-page">
 
-      <h1>Search Cards</h1>
+      <h1 className="page__title">Search cards</h1>
 
-      <input
-        value={search}
-        onChange={(e)=>setSearch(e.target.value)}
-        placeholder="Search cards..."
-      />
+      <div className="catalog-toolbar">
+        <input
+          value={search}
+          onChange={(e)=>setSearch(e.target.value)}
+          placeholder="Search cards..."
+          aria-label="Search cards"
+        />
+      </div>
 
       <div className="card-grid">
 

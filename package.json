@@ -1,4 +1,11 @@
 {
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix ./mtg-card-explorer run dev",
+    "build": "npm --prefix ./mtg-card-explorer run build",
+    "preview": "npm --prefix ./mtg-card-explorer run preview",
+    "lint": "npm --prefix ./mtg-card-explorer run lint"
+  },
   "dependencies": {
     "react-router-dom": "^7.13.1"
   }

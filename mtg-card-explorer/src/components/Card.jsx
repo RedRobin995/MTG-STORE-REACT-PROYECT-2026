@@ -57,7 +57,7 @@ function Card({ card }) {
     card.card_faces?.[0]?.image_uris?.normal
 
   return (
-    <Link to={`/card/${card.id}`} style={{textDecoration:"none"}}>
+    <Link to={`/card/${card.id}`} className="card-link">
       <div className="card">
 
         <img src={image} />

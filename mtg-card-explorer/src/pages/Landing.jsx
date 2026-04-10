@@ -43,25 +43,22 @@ function Landing(){
 
   return (
 
-    <div style={{textAlign:"center", padding:"40px"}}>
+    <div className="page page--center">
 
-      <h1>MTG Card Store</h1>
+      <header className="hero">
+        <h1 className="hero__title">MTG Card Store</h1>
+        <p className="page__lead">
+          Search thousands of Magic cards and explore different printings.
+        </p>
+      </header>
 
-      <p>Search thousands of Magic cards and explore different printings.</p>
-
-      {/* BUSCADOR */}
-      <form onSubmit={handleSearch} style={{marginBottom:"30px"}}>
+      <form className="search-form" onSubmit={handleSearch}>
 
         <input
           type="text"
           placeholder="Search cards..."
           value={search}
           onChange={(e)=>setSearch(e.target.value)}
-          style={{
-            padding:"10px",
-            width:"250px",
-            marginRight:"10px"
-          }}
         />
 
         <button type="submit">
@@ -70,7 +67,7 @@ function Landing(){
 
       </form>
 
-      {loading && <p>Loading cards...</p>}
+      {loading && <p className="loading-text">Loading cards...</p>}
 
       <div className="landing-random-cards">
 
@@ -87,7 +84,6 @@ function Landing(){
               <img
                 src={image}
                 alt={card.name}
-                style={{width:"200px"}}
               />
 
             </Link>
@@ -97,19 +93,15 @@ function Landing(){
         })}
 
       </div>
-      <button style={{padding:"5px 10px", fontSize:"10px"}} onClick={loadRandomCards}>
-        Refresh Cards
-      </button>
 
-      <br/>
-
-      <br/><br/>
-
-      <Link to="/search">
-        <button style={{padding:"15px 30px", fontSize:"18px"}}>
-          Browse Cards
+      <div className="btn-row landing-actions">
+        <button type="button" className="btn btn--ghost btn--sm" onClick={loadRandomCards}>
+          Refresh cards
         </button>
-      </Link>
+        <Link to="/search" className="btn btn--primary btn--lg">
+          Browse cards
+        </Link>
+      </div>
 
     </div>
   )

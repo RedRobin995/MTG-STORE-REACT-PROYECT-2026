@@ -1,5 +1,10 @@
 function Account(){
-  return <h1>Account (coming soon)</h1>
+  return (
+    <div className="page page--account page--narrow">
+      <h1>Account</h1>
+      <p>Coming soon.</p>
+    </div>
+  )
 }
 
 export default Account

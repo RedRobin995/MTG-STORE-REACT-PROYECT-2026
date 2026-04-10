@@ -5,13 +5,15 @@ import Landing from "./pages/Landing"
 import Catalog from "./pages/Catalog"
 import CardDetail from "./pages/CardDetail"
 import Cart from "./pages/Cart"
+import Account from "./pages/Account"
+import DeckBuilder from "./pages/DeckBuilder"
 
 
 function App(){
 
   return (
 
-    <div>
+    <div className="app-shell">
 
       <Navbar />
 
@@ -25,8 +27,19 @@ function App(){
 
         <Route path="/cart" element={<Cart />} />
 
-        {/* GitHub Pages / hash routing edge-cases: never render blank */}
-        <Route path="*" element={<Landing />} />
+        <Route path="/account" element={<Account />} />
+
+        <Route path="/deck-builder" element={<DeckBuilder />} />
+
+        <Route
+          path="*"
+          element={
+            <div className="page not-found">
+              <h1>Page not found</h1>
+              <p>The page you are looking for does not exist.</p>
+            </div>
+          }
+        />
 
       </Routes>
 
